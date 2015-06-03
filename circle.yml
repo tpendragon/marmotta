@@ -2,6 +2,8 @@ machine:
   ruby:
     version: 2.2.0
 dependencies:
+  pre:
+    - gem install bundler
   post:
     - bundle exec rake jetty:clean
     - cd jetty && java -Djetty.port=8983 -Dsolr.solr.home=/home/ubuntu/marmotta/jetty/solr -Dmarmotta.home=/home/ubuntu/marmotta/jetty/marmotta -XX:MaxPermSize=256m -Xmx512m -jar start.jar:
