@@ -13,6 +13,7 @@ module Marmotta
         req.query[:uri] = uri.to_s
         req.query[:path] = path
         req.query.delete(:graph)
+        req.header = {}
       end
       if result.status_code == 200
         JSON.parse(result.body)
