@@ -1,17 +1,17 @@
 module Marmotta
   class LdPathConnection
-    attr_reader :connection, :path
+    attr_reader :connection, :uri
     # @param [Hurley::Client] connection A client to use for running queries.
     # @param [String, #to_s] An LDPath to run
-    def initialize(connection, path)
+    def initialize(connection, uri)
       @connection = connection
-      @path = path.to_s
+      @uri = uri.to_s
     end
 
-    def get(uri)
+    def get(path)
       result = connection.get(api_path) do |req|
-        req.query[:uri] = uri.to_s
-        req.query[:path] = path
+        req.query[:uri] = uri
+        req.query[:path] = path.to_s
         req.query.delete(:graph)
         req.header = {}
       end

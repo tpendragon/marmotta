@@ -53,11 +53,11 @@ RSpec.describe Marmotta::Connection do
 
   describe "#ldpath" do
     it "should return an LDPathConnection" do
-      path = "testpath"
+      uri = "testpath"
       connection = double("connection")
-      allow(Marmotta::LdPathConnection).to receive(:new).with(subject.send(:connection), path).and_return(connection)
+      allow(Marmotta::LdPathConnection).to receive(:new).with(subject.send(:connection), uri).and_return(connection)
 
-      expect(subject.ldpath(path)).to eq connection
+      expect(subject.ldpath(uri)).to eq connection
 
     end
   end
