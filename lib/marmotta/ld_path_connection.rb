@@ -18,7 +18,7 @@ module Marmotta
       if result.status_code == 200
         JSON.parse(result.body)
       else
-        {}
+        []
       end
     end
 
