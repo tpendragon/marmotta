@@ -42,6 +42,13 @@ module Marmotta
       end
     end
 
+    # Returns an LDPath connection for a given path.
+    # @param [String, #to_s] path LDPath query to run
+    # @return [LdPathConnection] Connection which will run that path query.
+    def ldpath(path)
+      LdPathConnection.new(connection, path)
+    end
+
     private
 
     def connection

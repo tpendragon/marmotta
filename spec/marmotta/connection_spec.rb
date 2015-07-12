@@ -50,4 +50,15 @@ RSpec.describe Marmotta::Connection do
       expect(subject.post(RDF::Graph.new)).to eq true
     end
   end
+
+  describe "#ldpath" do
+    it "should return an LDPathConnection" do
+      path = "testpath"
+      connection = double("connection")
+      allow(Marmotta::LdPathConnection).to receive(:new).with(subject.send(:connection), path).and_return(connection)
+
+      expect(subject.ldpath(path)).to eq connection
+
+    end
+  end
 end
